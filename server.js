@@ -8,8 +8,7 @@ const flash = require("connect-flash");
 require("./config/passport")(passport)
 
 mongoose.connect(
-  process.env.MONGODB_URI ||
-  "mongodb://localhost:27017/practise",
+ "mongodb+srv://nadir:nadir786@cluster0-b2ety.mongodb.net/test?retryWrites=true&w=majority",
   { useNewUrlParser: true, useUnifiedTopology: true },
   () => console.log("Connected To MongoDB")
 );
@@ -48,7 +47,7 @@ app.use((req,res,next)=>{
 app.use("/", require("./routes/index.js"));
 app.use("/users", require("./routes/users.js"));
 app.get('*',(req,res)=>{
-  res.sendFile(__dirname+"/index.html")
+  res.render("welcome");
 })
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => console.log("Server Running At Port 3000"));
