@@ -48,7 +48,7 @@ app.use((req,res,next)=>{
 app.use("/", require("./routes/index.js"));
 app.use("/users", require("./routes/users.js"));
 app.get('*',(req,res)=>{
-  res.render("welcome");
+  res.sendFile(__dirname+"/index.html")
 })
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => console.log("Server Running At Port 3000"));
